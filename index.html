@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Necessary + Analytics Cookie Demo</title>
+
+  <!-- Necessary cookie (session/authentication style) -->
+  <script>
+    // Simulate a login/session cookie
+    document.cookie = "sessionID=abc123xyz; path=/; Secure; HttpOnly; SameSite=Strict";
+    document.cookie = "csrfToken=secureToken987; path=/; Secure; HttpOnly; SameSite=Strict";
+  </script>
+
+  <!-- Analytics cookies (Google Analytics example) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0000000003"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // Configure Google Analytics
+    gtag('config', 'G-0000000003', {
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  </script>
+</head>
+<body>
+  <h1>Necessary + Analytics Cookie Demo Page</h1>
+  <p>This page sets dummy session cookies (Necessary) and loads Google Analytics (Analytics).</p>
+
+  <form>
+    <label>Username: <input type="text" name="username"></label><br>
+    <label>Password: <input type="password" name="password"></label><br>
+    <button type="submit">Login</button>
+  </form>
+
+  <p><a href="https://www.seqrite.com/data-privacy">Powered by Seqrite</a></p>
+</body>
+</html>
